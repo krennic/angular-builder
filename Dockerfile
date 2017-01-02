@@ -9,6 +9,6 @@ RUN apt-get update && \
 
 #RUN npm install npm@latest -g && npm cache clean && rm -rf ~/.npm
 
-RUN npm install angular-cli -g && npm cache clean && rm -rf ~/.npm
+RUN npm install angular-cli@1.0.0-beta.22-1 -g && npm cache clean && rm -rf ~/.npm
 
 WORKDIR /workspace
