@@ -5,8 +5,9 @@ MAINTAINER krennic
 RUN apt-get update && \
     apt-get install -y \
     curl \
-    npm &&\
-    npm install npm@latest -g &&\
-    npm install angular-cli@latest -g
+    npm
+
+RUN npm install -g npm@latest &&\
+    npm install -g angular-cli
 
 WORKDIR /workspace
