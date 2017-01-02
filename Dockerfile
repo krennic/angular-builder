@@ -6,7 +6,7 @@ RUN apt-get update && \
     apt-get install -y \
     curl \
     npm &&\
-    npm install npm@latest &&\
-    npm install angular-cli@latest
+    npm install -g npm@latest &&\
+    npm install -g angular-cli@latest
 
 WORKDIR /workspace
