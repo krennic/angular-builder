@@ -2,8 +2,7 @@ FROM node:7.3
 
 MAINTAINER krennic
 
-RUN apt-get update && \
-    apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends\
     curl \
     npm \
     && rm -rf /var/lib/apt/lists/*
