@@ -5,7 +5,8 @@ MAINTAINER krennic
 RUN apt-get update && \
     apt-get install -y \
     curl \
-    npm
+    npm \
+    && rm -rf /var/lib/apt/lists/*
 
 #RUN npm install npm@latest -g && npm cache clean && rm -rf ~/.npm
 
