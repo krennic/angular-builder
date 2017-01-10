@@ -21,6 +21,8 @@ RUN echo 'deb http://ppa.launchpad.net/mozillateam/firefox-next/ubuntu trusty ma
 
 #Add virtual screen
 ADD xvfb.init /etc/init.d/xvfb
+ADD entrypoint.sh /entrypoint.sh
+
 RUN chmod +x /etc/init.d/xvfb && \
     update-rc.d xvfb defaults
 
@@ -28,4 +30,6 @@ WORKDIR /workspace
 
 EXPOSE 4200
 
-CMD ["service xvfb start", "sleep 2", "export DISPLAY=:10", "/bin/bash"]
+ENV DISPLAY :10
+
+ENTRYPOINT ["/entrypoint.sh"]
