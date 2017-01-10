@@ -22,13 +22,10 @@ RUN echo 'deb http://ppa.launchpad.net/mozillateam/firefox-next/ubuntu trusty ma
 #Add virtual screen
 ADD xvfb.init /etc/init.d/xvfb
 RUN chmod +x /etc/init.d/xvfb && \
-    update-rc.d xvfb defaults &&\
-    service xvfb start &&\
-    sleep 2 &&\
-    export DISPLAY=:10
+    update-rc.d xvfb defaults
 
 WORKDIR /workspace
 
 EXPOSE 4200
 
-CMD ["/bin/bash"]
+CMD ["service xvfb start", "sleep 2", "export DISPLAY=:10", "/bin/bash"]
