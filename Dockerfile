@@ -31,4 +31,4 @@ WORKDIR /workspace
 
 EXPOSE 4200
 
-ENTRYPOINT ["/bin/bash"]
+CMD ["/bin/bash"]
