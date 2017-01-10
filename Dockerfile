@@ -24,6 +24,7 @@ ADD xvfb.init /etc/init.d/xvfb
 ADD entrypoint.sh /entrypoint.sh
 
 RUN chmod +x /etc/init.d/xvfb && \
+    chmod +x /entrypoint.sh &&\
     update-rc.d xvfb defaults
 
 WORKDIR /workspace
