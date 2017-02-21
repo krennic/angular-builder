@@ -1,6 +1,8 @@
 #!/bin/bash -e
 
 #workaround karma
-/etc/init.d/xvfb start && sleep 2
+if [ -n "$ENABLE_FF"]; then
+	/etc/init.d/xvfb start && sleep 2
+fi
 
 exec "$@"
