@@ -6,18 +6,19 @@ MAINTAINER krennic
 RUN apt-get update && apt-get install -y --no-install-recommends\
     curl \
     npm \
-    && rm -rf /var/lib/apt/lists/*
+    xvfb \
+    python-pip\
+    && rm -rf /var/lib/apt/lists/* \
+    && pip install selenium
 
 #RUN npm install npm@latest -g && npm cache clean && rm -rf ~/.npm
 RUN npm install -g @angular/cli@v1.0.0-rc.1 && npm cache clean && rm -rf ~/.npm
 
 # install firefox for karma testing
-RUN echo 'deb http://ppa.launchpad.net/mozillateam/firefox-next/ubuntu trusty main' > /etc/apt/sources.list.d/mozillateam-firefox-next-trusty.list &&\
-    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A6AA8C72 &&\
-    apt-get update &&\
-    apt-get install -y firefox xvfb python-pip &&\
-    rm -rf /var/lib/apt/lists/* &&\
-    pip install selenium
+RUN wget https://ftp.mozilla.org/pub/firefox/releases/52.0/linux-x86_64/fr/ &&\
+    tar xjf firefox-*.tar.bz2 \
+    mv firefox-* /usr/local/firefox/
+
 
 #Add virtual screen
 ADD xvfb.init /etc/init.d/xvfb
