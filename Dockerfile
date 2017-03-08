@@ -13,7 +13,7 @@ RUN npm install -g @angular/cli@v1.0.0-rc.1 && npm cache clean && rm -rf ~/.npm
 
 # install firefox for karma testing
 RUN echo 'deb http://ppa.launchpad.net/mozillateam/firefox-next/ubuntu trusty main' > /etc/apt/sources.list.d/mozillateam-firefox-next-trusty.list &&\
-    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886 &&\
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A6AA8C72 &&\
     apt-get update &&\
     apt-get install -y firefox xvfb python-pip &&\
     rm -rf /var/lib/apt/lists/* &&\
