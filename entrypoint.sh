@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 #workaround karma
-if [ -n "$ENABLE_FF"]; then
+if [ "$ENABLE_FF" == "TRUE"]; then
 	/etc/init.d/xvfb start && sleep 2
 fi
 
