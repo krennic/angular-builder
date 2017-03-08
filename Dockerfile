@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends\
     && rm -rf /var/lib/apt/lists/*
 
 #RUN npm install npm@latest -g && npm cache clean && rm -rf ~/.npm
-RUN npm install -g angular-cli@v1.0.0-beta.24 && npm cache clean && rm -rf ~/.npm
+RUN npm install -g @angular/cli@v1.0.0-rc.1 && npm cache clean && rm -rf ~/.npm
 
 # install firefox for karma testing
 RUN echo 'deb http://ppa.launchpad.net/mozillateam/firefox-next/ubuntu trusty main' > /etc/apt/sources.list.d//mozillateam-firefox-next-trusty.list &&\
