@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends\
 RUN npm install -g @angular/cli@v1.0.0-rc.1 && npm cache clean && rm -rf ~/.npm
 
 # install firefox for karma testing
-RUN wget https://ftp.mozilla.org/pub/firefox/releases/52.0/linux-x86_64/fr/ &&\
+RUN wget https://ftp.mozilla.org/pub/firefox/releases/52.0/linux-x86_64/fr/firefox-52.0.tar.bz2 &&\
     tar xjf firefox-*.tar.bz2 \
     mv firefox-* /usr/local/firefox/
 
