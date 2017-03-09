@@ -11,7 +11,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends\
     npm \
     xvfb \
     python-pip\
-    firefox-esr\
     && rm -rf /var/lib/apt/lists/* \
     && pip install selenium
 
@@ -19,11 +18,11 @@ RUN npm uninstall npm -g && npm install npm@latest -g && npm cache clean && rm -
 RUN npm install -g @angular/cli@v1.0.0-rc.1 && npm cache clean && rm -rf ~/.npm
 
 # install firefox for karma testing
-RUN wget https://ftp.mozilla.org/pub/firefox/releases/${FIREFOX_VERSION}/linux-x86_64/fr/firefox-${FIREFOX_VERSION}.tar.bz2 &&\
-    tar xjf firefox-*.tar.bz2 &&\
-    mv firefox /opt/firefox-${FIREFOX_VERSION}/ &&\
-    rm firefox-*.tar.bz2 &&\
-    ln -fs /opt/firefox-${FIREFOX_VERSION}/firefox /usr/bin/firefox
+RUN echo 'deb http://downloads.sourceforge.net/project/ubuntuzilla/mozilla/apt all main' > /etc/apt/sources.list.d/mozilla.list &&\
+    apt-key adv --recv-keys --keyserver keyserver.ubuntu.com C1289A29 &&\
+    apt-get update &&\
+    apt-get install firefox-mozilla-build &&\
+    rm -rf /var/lib/apt/lists/*
 
 #Add virtual screen
 ADD xvfb.init /etc/init.d/xvfb
