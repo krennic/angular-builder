@@ -8,6 +8,7 @@ ENV FIREFOX_VERSION=52.0
 # Install npm and curl
 RUN apt-get update && apt-get install -y --no-install-recommends\
     curl \
+    apt-transport-https \
     npm \
     xvfb \
     python-pip\
