@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends\
     && rm -rf /var/lib/apt/lists/* \
     && pip install selenium
 
-RUN npm install npm@latest -g && npm cache clean && rm -rf ~/.npm
+RUN npm uninstall npm -g && install npm@latest -g && npm cache clean && rm -rf ~/.npm
 RUN npm install -g @angular/cli@${ANGULAR_CLI_VERSION} && npm cache clean && rm -rf ~/.npm
 
 # install firefox for karma testing
