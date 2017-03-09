@@ -16,7 +16,7 @@ PROG_OUTPUT="/tmp/Xvfb.out"
 
 case "$1" in
     start)
-        echo -n "Starting : X Virtual Frame Buffer "
+        echo "Starting : X Virtual Frame Buffer"
         $PROG $PROG_OPTIONS>>$PROG_OUTPUT 2>&1 &
         disown -ar
    		;;

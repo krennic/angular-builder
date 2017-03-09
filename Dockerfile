@@ -8,6 +8,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends\
     npm \
     xvfb \
     python-pip\
+    firefox-esr\
+#    libgtk-3-0\
+#    libdbus-glib-1-2\
     && rm -rf /var/lib/apt/lists/* \
     && pip install selenium
 
@@ -15,10 +18,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends\
 RUN npm install -g @angular/cli@v1.0.0-rc.1 && npm cache clean && rm -rf ~/.npm
 
 # install firefox for karma testing
-RUN wget https://ftp.mozilla.org/pub/firefox/releases/52.0/linux-x86_64/fr/firefox-52.0.tar.bz2 &&\
-    tar xjf firefox-*.tar.bz2 &&\
-    mv firefox /usr/local/firefox/
-
+# RUN wget https://ftp.mozilla.org/pub/firefox/releases/52.0/linux-x86_64/fr/firefox-52.0.tar.bz2 &&\
+#     tar xjf firefox-*.tar.bz2 &&\
+#     mv firefox /usr/local/firefox/
 
 #Add virtual screen
 ADD xvfb.init /etc/init.d/xvfb
