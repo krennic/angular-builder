@@ -1,8 +1,9 @@
-FROM node:7.3
+FROM node:6.10.0
 
 MAINTAINER krennic
 
 ENV FIREFOX_VERSION=52.0
+ENV ANGULAR_CLI_VERSION=v1.0.0-rc.1
 
 
 # Install npm and curl
@@ -16,7 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends\
     && pip install selenium
 
 RUN npm install npm@latest -g && npm cache clean && rm -rf ~/.npm
-RUN npm install -g @angular/cli@v1.0.0-rc.1 && npm cache clean && rm -rf ~/.npm
+RUN npm install -g @angular/cli@${ANGULAR_CLI_VERSION} && npm cache clean && rm -rf ~/.npm
 
 # install firefox for karma testing
 RUN wget https://ftp.mozilla.org/pub/firefox/releases/${FIREFOX_VERSION}/linux-x86_64/fr/firefox-${FIREFOX_VERSION}.tar.bz2 &&\
