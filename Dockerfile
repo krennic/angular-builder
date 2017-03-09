@@ -7,19 +7,15 @@ ENV FIREFOX_VERSION=52.0
 
 # Install npm and curl
 RUN apt-get update && apt-get install -y --no-install-recommends\
-    curl \
-    apt-transport-https \
     npm \
     xvfb \
     python-pip\
     iceweasel\
-    libgtk-3-0\
-    libdbus-glib-1-2\
     && rm -rf /var/lib/apt/lists/* \
     && pip install selenium
 
-#RUN npm install npm@latest -g && npm cache clean && rm -rf ~/.npm
-#RUN npm install -g @angular/cli@v1.0.0-rc.1 && npm cache clean && rm -rf ~/.npm
+RUN npm uninstall npm && npm install npm@latest -g && npm cache clean && rm -rf ~/.npm
+RUN npm install -g @angular/cli@v1.0.0-rc.1 && npm cache clean && rm -rf ~/.npm
 
 # install firefox for karma testing
 RUN wget https://ftp.mozilla.org/pub/firefox/releases/52.0/linux-x86_64/fr/firefox-52.0.tar.bz2 &&\
