@@ -23,7 +23,7 @@ RUN wget https://ftp.mozilla.org/pub/firefox/releases/${FIREFOX_VERSION}/linux-x
     tar xjf firefox-*.tar.bz2 &&\
     mv firefox /opt/firefox-${FIREFOX_VERSION}/ &&\
     rm firefox-*.tar.bz2 &&\
-    ln -s /opt/firefox-${FIREFOX_VERSION}/firefox /usr/bin/firefox
+    ln -fs /opt/firefox-${FIREFOX_VERSION}/firefox /usr/bin/firefox
 
 #Add virtual screen
 ADD xvfb.init /etc/init.d/xvfb
