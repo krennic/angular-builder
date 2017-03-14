@@ -1,8 +1,9 @@
-FROM node:6.10
+FROM node:6.10.0
 
 MAINTAINER krennic
 
 ENV FIREFOX_VERSION=51.0
+ENV ANGULAR_CLI_VERSION=v1.0.0-rc.1
 
 
 # Install npm and curl
@@ -13,8 +14,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends\
     && rm -rf /var/lib/apt/lists/* \
     && pip install selenium
 
-RUN npm uninstall npm -g && npm install npm@latest -g && npm cache clean && rm -rf ~/.npm
-RUN npm install -g @angular/cli@v1.0.0-rc.1 && npm cache clean && rm -rf ~/.npm
+
+RUN npm uninstall npm -g && install npm@latest -g && npm cache clean && rm -rf ~/.npm
+RUN npm install -g @angular/cli@${ANGULAR_CLI_VERSION} && npm cache clean && rm -rf ~/.npm
 
 
 RUN echo 'deb http://ppa.launchpad.net/mozillateam/firefox-next/ubuntu trusty main' > /etc/apt/sources.list.d//mozillateam-firefox-next-trusty.list &&\
@@ -29,8 +31,6 @@ RUN wget -q https://ftp.mozilla.org/pub/firefox/releases/${FIREFOX_VERSION}/linu
     mv firefox /opt/firefox-${FIREFOX_VERSION}/ &&\
     rm firefox-*.tar.bz2 &&\
     ln -fs /opt/firefox-${FIREFOX_VERSION}/firefox /usr/bin/firefox
-
-
 
 #Add virtual screen
 ADD xvfb.init /etc/init.d/xvfb
