@@ -1,4 +1,4 @@
-FROM node:7.3
+FROM node:6.10
 
 MAINTAINER krennic
 
