@@ -6,7 +6,7 @@ if [ "$ENABLE_FF" == "TRUE" ]; then
 fi
 
 #npm login
-if [ -z "$NPM_URL" && -z "$NPM_TOKEN" ]; then
+if [ -n "$NPM_URL" && -n "$NPM_TOKEN" ]; then
 	echo -e "$NPM_URL/repository/npm-snapshots/:_authToken=$NPM_TOKEN\n$NPM_URL/repository/npm-releases/:_authToken=$NPM_TOKEN" > /root/.npmrc
 fi
 
